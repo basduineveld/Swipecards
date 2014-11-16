@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.database.DataSetObserver;
-import android.os.Build;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
@@ -59,6 +58,7 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
      *                 both.
      * @param mAdapter The adapter you have to set.
      */
+    @SuppressWarnings("UnusedDeclaration")
     public void init(final Context context, Adapter mAdapter) {
         if (context instanceof onFlingListener) {
             mFlingListener = (onFlingListener) context;
@@ -128,9 +128,8 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    @TargetApi(17)
     private void makeAndAddView(View child) {
-
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) child.getLayoutParams();
         addViewInLayout(child, 0, lp, true);
 
@@ -244,10 +243,12 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
         return flingCardListener;
     }
 
+    @SuppressWarnings("UnusedDeclaration")
     public void setMaxVisible(int MAX_VISIBLE) {
         this.MAX_VISIBLE = MAX_VISIBLE;
     }
 
+    @SuppressWarnings("UnusedDeclaration")
     public void setMinStackInAdapter(int MIN_ADAPTER_STACK) {
         this.MIN_ADAPTER_STACK = MIN_ADAPTER_STACK;
     }
@@ -310,6 +311,7 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 
         public void onAdapterAboutToEmpty(int itemsInAdapter);
 
+        @TargetApi(11)
         public void onScroll(float scrollProgressPercent);
     }
 }

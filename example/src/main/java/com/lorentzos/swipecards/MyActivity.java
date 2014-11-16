@@ -97,19 +97,19 @@ public class MyActivity extends Activity {
         Toast.makeText(ctx, s, Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Trigger the right event manually.
+     */
     @OnClick(R.id.right)
     public void right() {
-        /**
-         * Trigger the right event manually.
-         */
         flingContainer.getTopCardListener().selectRight();
     }
 
+    /**
+     * Trigger the left event manually.
+     */
     @OnClick(R.id.left)
     public void left() {
-        /**
-         * Trigger the left event manually.
-         */
         flingContainer.getTopCardListener().selectLeft();
     }
 }
