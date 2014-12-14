@@ -1,5 +1,6 @@
 package com.lorentzos.swipecards;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -75,6 +76,7 @@ public class MyActivity extends Activity {
             }
 
             @Override
+            @TargetApi(11)
             public void onScroll(float scrollProgressPercent) {
                 View view = flingContainer.getSelectedView();
                 view.findViewById(R.id.item_swipe_right_indicator)
