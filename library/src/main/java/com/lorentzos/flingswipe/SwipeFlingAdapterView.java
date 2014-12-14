@@ -128,7 +128,6 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
         }
     }
 
-    @TargetApi(17)
     private void makeAndAddView(View child) {
         FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) child.getLayoutParams();
         addViewInLayout(child, 0, lp, true);
@@ -151,16 +150,15 @@ public class SwipeFlingAdapterView extends BaseFlingAdapterView {
 
         int gravity = lp.gravity;
         if (gravity == -1) {
-            gravity = Gravity.TOP | Gravity.START;
+            gravity = Gravity.TOP | Gravity.LEFT;
         }
 
-        int layoutDirection = getLayoutDirection();
-        final int absoluteGravity = Gravity.getAbsoluteGravity(gravity, layoutDirection);
+        final int horizontalGravity = gravity & Gravity.HORIZONTAL_GRAVITY_MASK;
         final int verticalGravity = gravity & Gravity.VERTICAL_GRAVITY_MASK;
 
         int childLeft;
         int childTop;
-        switch (absoluteGravity & Gravity.HORIZONTAL_GRAVITY_MASK) {
+        switch (horizontalGravity) {
             case Gravity.CENTER_HORIZONTAL:
                 childLeft = (getWidth() + getPaddingLeft() - getPaddingRight() - w) / 2 +
                         lp.leftMargin - lp.rightMargin;
